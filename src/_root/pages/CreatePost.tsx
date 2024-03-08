@@ -1,6 +1,4 @@
 import PostForm from '@/components/forms/PostForm'
-import React from 'react'
-
 const CreatePost = () => {
   return (
     <div className='flex flex-1'>
