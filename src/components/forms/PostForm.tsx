@@ -12,7 +12,6 @@ import { Models } from 'appwrite'
 import { useUserContext } from '@/context/AuthContext'
 import { useToast } from '../ui/use-toast'
 import { useCreatePost, useUpdatePost } from '@/lib/react-query/queriesAndMutations';
-import { updatePost } from '@/lib/appwrite/api';
 
 type PostFormProps = {
   post?: Models.Document;
@@ -39,7 +38,7 @@ const PostForm = ({post, action}: PostFormProps) => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if(post&&action==='Update') {
-      const updatedPost = await updatePost({
+      const updatedPost = await UpdatePost({
         ...values,
         postId: post.$id,
         imageId: post?.imageId,
