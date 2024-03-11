@@ -18,3 +18,11 @@ export const SignupValidation = z.object({
     location: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(2200,{message: 'Too long, must be less than 2200 characters.'}),
     tags: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(2200,{message: 'Too long, must be less than 2200 characters.'}),
   })
+
+  export const ProfileValidation = z.object({
+    file: z.custom<File[]>(),
+    name: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(50,{message: 'Too long, must be less than 50 characters.'}),
+    username: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(50,{message: 'Too long, must be less than 50 characters.'}),
+    email: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(320,{message: 'Too long, must be less than 320 characters.'}),
+    bio: z.string().min(2,{message: 'Too short, must be greater than 2 characters.'}).max(2200,{message: 'Too long, must be less than 2200 characters.'}),
+  });
