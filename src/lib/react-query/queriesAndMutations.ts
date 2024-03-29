@@ -7,7 +7,6 @@ import {
 } from '@tanstack/react-query'
 import { createPost, createUserAccount, deletePost, deleteSavedPost, getCurrentUser, getInfinitePosts, getPostById, getRecentPosts, likePost, savePost, searchPosts, signInAccount, signOutAccount, updatePost } from '../appwrite/api'
 import { QUERY_KEYS } from './queryKeys';
-import { string } from 'prop-types';
 
 export const useCreateUserAccount = () => {
     return useMutation({
@@ -150,9 +149,8 @@ export const useGetPosts = () => {
         queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
         queryFn: getInfinitePosts,
         getNextPageParam: (lastPage) => {
-            if(lastPage&& lastPage.documents.length ===0) return null;
-
-            const lastId = lastPage.documents[lastPage?.documents.length -1].$id;
+            if(lastPage && lastPage?.documents.length ===0) return null;
+            const lastId = lastPage?.documents[lastPage?.documents.length -1].$id;
             return lastId;
         }
     })
